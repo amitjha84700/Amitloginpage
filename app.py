@@ -22,7 +22,7 @@ def login():
     result = cursor.fetchone()
 
     if result:
-        stored_password = result[4]
+        stored_password = result[3]
         if password == stored_password:
             return f"Hi {result[1]}, welcome to our world"
         else:
