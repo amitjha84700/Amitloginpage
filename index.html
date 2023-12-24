@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Login System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#5DE0F0,#F7A6F5);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: linear-gradient(135deg,#F7A6F5,#5DE0F0);
+
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .container h1 {
+            color: #333;
+        }
+
+        #form-container {
+            margin-top: 20px;
+        }
+
+        form {
+            display: none;
+        }
+
+        form.active {
+            display: block;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #b42400;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 34px;
+            font-size: 16px;
+        }
+
+        button.signup {
+            background-color: #003566;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button.active {
+            background:linear-gradient(135deg,#0077b6,#0096c7)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Login System</h1>
+        <button onclick="toggleForm('login-form')">Login</button>
+        <button class="signup" onclick="toggleForm('signup-form')">Sign Up</button>
+        <div id="form-container">
+            <form id="login-form" class="active" method="post" action="{{ url_for('login') }}">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required />
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required />
+
+                <button type="submit">Login</button>
+            </form>
+
+            <form id="signup-form" method="post" action="{{ url_for('signup') }}">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required />
+
+                <label for="cont">Contact:</label>
+                <input type="text" id="cont" name="cont" required />
+
+                <label for="mail">Email:</label>
+                <input type="email" id="mail" name="mail" required />
+
+                <label for="gender">Gender (M or F):</label>
+                <input type="text" id="gender" name="gender" required />
+
+                <label for="username_signup">Create Username:</label>
+                <input type="text" id="username_signup" name="username" required />
+
+                <label for="create_pswd">Create Password:</label>
+                <input type="password" id="create_pswd" name="create_pswd" required />
+
+                <label for="cnfirm_pswd">Confirm Password:</label>
+                <input type="password" id="cnfirm_pswd" name="cnfirm_pswd" required />
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        function toggleForm(formId) {
+            document.getElementById('login-form').classList.remove('active');
+            document.getElementById('signup-form').classList.remove('active');
+            document.getElementById(formId).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
